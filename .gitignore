@@ -39,3 +39,5 @@ apps/static/assets/.temp
 
 *.sqlite3
 *.log
+
+.env
