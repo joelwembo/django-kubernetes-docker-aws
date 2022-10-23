@@ -1,11 +1,6 @@
 import pytest
 from django.contrib.auth.models import User
 
-
-
-
-
-
 @pytest.fixture
 def function_fixture():
    print('Fixture for each test')

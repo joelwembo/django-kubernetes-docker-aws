@@ -91,29 +91,29 @@ WSGI_APPLICATION = 'fintechengine.wsgi.application'
 # Database # #
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("POSTGRES_DB"),
-        'USER': os.getenv("POSTGRES_USER"),
-        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
-        'HOST': os.getenv("POSTGRES_HOST"),
-        'PORT': os.getenv("POSTGRES_PORT"),
-    }
-}
-
-
-# Production / Development MYSQL
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'fintech_enterpriseDB',
-#         'USER': 'root',
-#         'HOST': 'localhost',
-#         'PASSWORD': 'abcde@12345',
-#         'PORT': '3306',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv("POSTGRES_DB"),
+#         'USER': os.getenv("POSTGRES_USER"),
+#         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+#         'HOST': os.getenv("POSTGRES_HOST"),
+#         'PORT': os.getenv("POSTGRES_PORT"),
 #     }
 # }
+
+
+#Production / Development MYSQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'fintech_enterpriseDB',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PASSWORD': '',
+        'PORT': '3306',
+    }
+}
 
 # Docker Settings for Mysql # # #
 # DATABASES = {
