@@ -115,7 +115,7 @@ DATABASES = {
     }
 }
 
-# Docker Settings for Mysql # # #
+# Docker Settings for Mysql
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
