@@ -1,27 +1,21 @@
-from collections import defaultdict
+graph = {
+    'a': ['c'],
+    'b': ['d'],
+    'c': ['e'],
+    'd': ['a', 'd'],
+    'e': ['b', 'c']
+}
 
-graph = defaultdict(list)
+def find_all_paths(graph, start, end, path = []):
+    path = path + [start]
+    if start == end:
+        return [path]
+    paths = []
+    for node in graph[start]:
+        if node in path:
+            newpaths = find_all_paths(graph, node, end, path)
+        for newpath in newpaths:
+            paths.append(newpath)
+    return paths
+print(find_all_paths(graph, 'd', 'c'))
 
-def addEdge(graph, node1, node2):
-    graph[node1].append(node2)
-
-def generate_edges(graph):
-    edges = []
-
-    for node in graph:
-        for neighbour in graph[node]:
-            edges.append((node, neighbour))
-
-    return edges
-addEdge(graph,'a','c')
-addEdge(graph,'b','c')
-addEdge(graph,'b','e')
-addEdge(graph,'c','d')
-addEdge(graph,'c','e')
-addEdge(graph,'c','a')
-addEdge(graph,'c','b')
-addEdge(graph,'e','b')
-addEdge(graph,'d','c')
-addEdge(graph,'e','c')
-
-print(generate_edges(graph))
