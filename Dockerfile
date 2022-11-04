@@ -9,6 +9,9 @@ RUN pip install --upgrade setuptools
 RUN pip install --no-cache-dir -r requirements.txt
 RUN python manage.py makemigrations
 RUN python manage.py migrate
+
+RUN python /src/wheremyfile/finbo.py
+
 EXPOSE 8000
 
 # gunicorn

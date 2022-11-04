@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'apps.home',
     'apps.celerydemo',
     'apps.flight',
-    'apps.payments'
+    'apps.payments',
+    'apps.fibonnaci'
 
 ]
 
