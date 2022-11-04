@@ -94,9 +94,46 @@ def quicksort(array, low, high):
         quicksort(array, low, pi - 1)
         quicksort(array, pi + 1, high)
 
+def LinearSearch(array, n , k):
+    for j in range(0, n):
+        if (array[j] == k):
+            print('element found at index' , j )
+            return True
+    print("Element not found")
+    return False
 
-data = [9,8,7,5,4,1,0]
+
+
+def ImprovedLinearSearch(array, element):
+    size = len(array)
+    for j in range(0 , size):
+        if array[j] == element:
+            return True
+    return False
+
+
+def BinarySearch(array, k, low, high):
+    if low > high:
+        return False
+    else:
+        mid = (low + high) // 2
+
+        if k == array[mid]:
+            return mid
+
+        elif k > array[mid]:
+            return BinarySearch(array, k, mid + 1, high)
+        else:
+            return BinarySearch(array, k, low, mid - 1)
+
+
+
+real_raw_input = vars(__builtins__).get('raw_input',input)
+
+key = real_raw_input("Data here : ")
+
+data = [10,20,40,50, 30]
 size = len(data)
-quicksort(data, 0, size - 1)
-print('Sorted Array in Ascending Order:')
-print(data)
+# quicksort(data, 0, size - 1)
+# print('Sorted Array in Ascending Order:')
+print(ImprovedLinearSearch(data, real_raw_input))
