@@ -25,12 +25,30 @@ def printPreorder(root):
         printPreorder(root.right)
 
 
+
+# Binary search in python
+
+def binarySearch(array , x , low, high):
+
+    while low <= high:
+        mid = low + (high - low) // 2
+        if array[mid] == x:
+            return mid
+        elif array[mid] < x:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
 # Driver code
 if __name__ == "__main__":
-    root = Node(1)
-    root.left = Node(2)
-    root.right = Node(3)
-    root.left.left = Node(4)
-    root.left.right = Node(5)
-    "Preorder traversal of binary tree is"
-    printPreorder(root + "left left : " + root.left.left)
+     # root = Node(1)
+    # root.left = Node(2)
+    # root.right = Node(3)
+    # root.left.left = Node(4)
+    # root.left.right = Node(5)
+    # "Preorder traversal of binary tree is"
+    # printPreorder(root + "left left : " + root.left.left)
+     array = [3, 4, 5, 6, 7, 8, 9]
+     x = 4
+     print(binarySearch(array,4, len(array) -1 ))

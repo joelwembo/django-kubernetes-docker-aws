@@ -1,17 +1,6 @@
-from enum import Enum, auto
+data = [1,50,100,200]
+items = ["sdfsdf", "baban", "ihh"]
+color = ["lbue", "redd"]
 
-class OrganizationRole(Enum):
-    CEO = auto()
-    PRESIDENT = auto()
-    MANAGER = auto()
-    STAFF = auto()
 
-class OrgRoleRange(Enum):
-    CEO, PRESIDENT, MANAGER, STAFF = range(4)
-
-def main():
-    my_role = OrganizationRole.MANAGER
-    print(my_role)
-
-if __name__ == "__main__":
-    main()
+print(zip((data), items))
