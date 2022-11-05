@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: load-balancer
   labels:
-    app: react-docker
+    app: DJANGO-docker
 spec:
   type: LoadBalancer
   ports:

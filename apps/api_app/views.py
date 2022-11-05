@@ -5,7 +5,7 @@ from rest_framework import status
 from .serializers import CartItemSerializer, UserSerializer, GroupSerializer, PersonSerializer, SpeciesSerializer
 from .models import CartItem , Person, Species
 from django.shortcuts import get_object_or_404
-# from django.views.generic import ListView
+
 
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
