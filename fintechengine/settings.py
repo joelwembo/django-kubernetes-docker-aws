@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.celerydemo',
     'apps.flight',
     'apps.payments',
+    'apps.roicalculations'
 
 ]
 
