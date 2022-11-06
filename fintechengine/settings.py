@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'apps.celerydemo',
     'apps.flight',
     'apps.payments',
-    'apps.fibonnaci'
 
 ]
 
@@ -152,16 +151,16 @@ REST_FRAMEWORK = {
 
     'PAGE_SIZE': 20,
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     ],
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ),
+    # 'DEFAULT_RENDERER_CLASSES': [
+    #     'rest_framework.renderers.JSONRenderer',
+    #     'rest_framework.renderers.BrowsableAPIRenderer',
+    # ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    #     'rest_framework.authentication.SessionAuthentication',
+    # ),
     
 }
 # # gh #

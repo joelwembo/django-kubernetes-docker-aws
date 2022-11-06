@@ -39,7 +39,7 @@ urlpatterns = [
     path('payments/', include('apps.payments.urls')),
     path('stripe-store/', HomePageView.as_view(), name='home'),
     path('api-app/', include('apps.api_app.urls')),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # path("", include("apps.authentication.urls")),
     # path("", include("apps.home.urls"))
 ]

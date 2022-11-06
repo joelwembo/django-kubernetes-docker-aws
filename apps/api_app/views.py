@@ -2,8 +2,9 @@ from typing import List
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import CartItemSerializer, UserSerializer, GroupSerializer, PersonSerializer, SpeciesSerializer
-from .models import CartItem , Person, Species
+from rest_framework import viewsets
+from .serializers import MenuSerializer, CartItemSerializer, UserSerializer, GroupSerializer, PersonSerializer, SpeciesSerializer
+from .models import CartItem , Person, Species , Menu
 from django.shortcuts import get_object_or_404
 
 
@@ -69,4 +70,8 @@ class SpeciesViewSet(viewsets.ModelViewSet):
     queryset = Species.objects.all()
     serializer_class = SpeciesSerializer
 
- 
+
+class MenuViewSet(viewsets.ModelViewSet):
+    serializer_class = MenuSerializer
+    def get_queryset(self):
+        return Menu.objects.all()

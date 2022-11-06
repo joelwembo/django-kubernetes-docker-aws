@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 
-from .models import CartItem , Person, Species
+from .models import CartItem , Person, Species , Menu
 
 class CartItemSerializer(serializers.ModelSerializer):
     product_name = serializers.CharField(max_length=200)
@@ -34,3 +34,7 @@ class SpeciesSerializer(serializers.ModelSerializer):
             model = Species
             fields = ('name', 'classification', 'language')        
       
+class MenuSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Menu
+        fields = ['id', 'name', 'description', 'price', 'created', 'updated']
