@@ -5,6 +5,12 @@ from rest_framework import routers
 from apps.api_app import views
 from apps.payments.views import HomePageView
 
+from ninja import NinjaAPI
+from apps.roicalculations.api import api as sample_api
+
+from django.conf.urls.static import static
+from django.conf import settings
+
 from django.views import generic
 from rest_framework.schemas import get_schema_view
 from rest_framework_simplejwt.views import (
@@ -30,12 +36,17 @@ from rest_framework.response import Response
 # router.register(r'snippets', views.GroupViewSet)
 
 
+api = NinjaAPI(title="Sample APIs with Django Ninja", docs_url="/docs")
+api.add_router("", sample_api)
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('router/', include(router.urls)),
     path('snippets/', include('apps.snippets.urls')),
     path('', include('apps.flight.urls')),
-    path('api/v1/flight/', include('apps.flight.urls')),
+    # path('api/v1/flight/', include('apps.flight.urls')),
+    path("api/", api.urls), # Ninja with data api
     path('payments/', include('apps.payments.urls')),
     path('stripe-store/', HomePageView.as_view(), name='home'),
     path('api-app/', include('apps.api_app.urls')),
@@ -43,6 +54,9 @@ urlpatterns = [
     # path("", include("apps.authentication.urls")),
     # path("", include("apps.home.urls"))
 ]
+#
+# if settings.DEBUG:  # new
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # authentification system
 #

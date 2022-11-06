@@ -14,3 +14,16 @@ class Contact(models.Model):
     class Meta:
         managed = True
         db_table = "contact"
+
+ # context = {'amount': investamount, 'ir': ir, 'period': duration, 'totalinterest': totalinterest,
+ #               'totalROIA': totalROIA, 'totalinvest': totalinvest, 'oneROIA': oneROIA, 'oneinterest': oneinterest}
+
+class RoiInvestment(models.Model):
+    amount = models.CharField(max_length=200)
+    totalinterest = models.CharField(max_length=200)
+    ir = models.CharField(max_length=200)
+    period = models.CharField(max_length=200)
+    totalROIA = models.CharField(max_length=200)
+    totalinvest = models.CharField(max_length=200)
+    oneROIA = models.CharField(max_length=200)
+    oneinterest = models.CharField(max_length=200)
