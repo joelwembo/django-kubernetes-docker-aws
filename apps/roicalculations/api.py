@@ -14,3 +14,7 @@ def add_contact(request, contact: schema.ContactCreate):
 @api.get("/get-contact", response=List[schema.Contact], tags=["Get Contacts"])
 def get_contact(request):
     return Contact.get_contacts(request)
+
+@api.get("/get-investments", response=List[schema.Investment], tags=["Get Investment"])
+def get_investments(request):
+    return ROIInvestmnet.get_investment(request)

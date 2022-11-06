@@ -217,7 +217,7 @@ class ROIInvestmnet:
         except Exception as error:
             return str(error)
 
-    def get_contacts(request):
+    def get_investment(request):
         try:
             investment = RoiInvestment.objects.all()
             return investment

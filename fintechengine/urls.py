@@ -36,7 +36,7 @@ from rest_framework.response import Response
 # router.register(r'snippets', views.GroupViewSet)
 
 
-api = NinjaAPI(title="Sample APIs with Django Ninja", docs_url="/docs")
+api = NinjaAPI(title="ROI investment Rest API Docs", docs_url="/docs")
 api.add_router("", sample_api)
 
 

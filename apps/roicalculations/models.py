@@ -27,3 +27,10 @@ class RoiInvestment(models.Model):
     totalinvest = models.CharField(max_length=200)
     oneROIA = models.CharField(max_length=200)
     oneinterest = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.amount} {self.totalinvest}"
+
+    class Meta:
+        managed = True
+        db_table = "RoiInvestment"
