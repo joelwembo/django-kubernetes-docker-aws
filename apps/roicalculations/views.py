@@ -207,22 +207,22 @@ class ROIInvestmnet:
 
     def create_investment(request, RoiInvestment):
         try:
-            if type(contact) != "dict":
-                contact = contact.dict()
-            contact = contact_table.objects.create(**contact)
-            contact.save()
-            if contact:
-                return "contact saved"
+            if type(RoiInvestment) != "dict":
+                RoiInvestment = RoiInvestment.dict()
+            RoiInvestment = RoiInvestment.objects.create(**RoiInvestment)
+            RoiInvestment.save()
+            if RoiInvestment:
+                return "Invesment Saved saved"
             return {"error ": "failed to save"}
         except Exception as error:
             return str(error)
 
     def get_contacts(request):
         try:
-            contacts = contact_table.objects.all()
-            return contacts
-            if contacts:
-                return contacts
+            investment = RoiInvestment.objects.all()
+            return investment
+            if investment:
+                return investment
             return {status: 500, context: "failed to save"}
         except Exception as error:
             return str(error)
