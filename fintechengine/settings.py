@@ -82,39 +82,39 @@ WSGI_APPLICATION = 'fintechengine.wsgi.application'
 # Database #
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 #
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
+}
 # 
-# Database # #
+# Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+# Database Docker
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv("POSTGRES_DB"),
-#         'USER': os.getenv("POSTGRES_USER"),
-#         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
-#         'HOST': os.getenv("POSTGRES_HOST"),
-#         'PORT': os.getenv("POSTGRES_PORT"),
+#         'NAME': 'fintech_enterpriseDB',
+#         'USER': 'joelwembo',
+#         'PASSWORD': 'abcde@12345',
+#         'HOST': 'db',
+#         'PORT': 5432,
 #     }
 # }
 
 
-#Production / Development MYSQL
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fintech_enterpriseDB',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PASSWORD': '',
-        'PORT': '3306',
-    }
-}
+# #Production / Development MYSQL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'fintech_enterprisedb',
+#         'USER': 'root',
+#         'HOST': 'localhost',
+#         'PASSWORD': '',
+#         'PORT': '3306',
+#     }
+# }
 
 # Docker Settings for Mysql
 # DATABASES = {
@@ -198,14 +198,8 @@ STATICFILES_DIRS = (
     os.path.join(CORE_DIR, 'apps/static'),
 )
 
-# Celery Settings and Redis #
-#
-# Testing Cache env 
-# CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", 'redis://localhost:6379')
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
-# BROKER_URL = 'redis://localhost:6379/0'
 
-# Production Setting
+# Celery Settings and Redis  Production Setting
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
 BROKER_URL = 'redis://localhost:6379/0'

@@ -9,7 +9,8 @@ PGADMIN_DEFAULT_PASSWORD: abcde@12345
 
 Name : finengine.io
 
-Host name/address : 5432
+Host name/address :  db
+Port : 5432
 
 Maintenance Ddatabse: postgres
 

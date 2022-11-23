@@ -5,8 +5,8 @@ from rest_framework import routers
 from apps.api_app import views
 from apps.payments.views import HomePageView
 
-from ninja import NinjaAPI
-from apps.roicalculations.api import api as sample_api
+# from ninja import NinjaAPI
+# from apps.roicalculations.api import api as sample_api
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -36,8 +36,8 @@ from rest_framework.response import Response
 # router.register(r'snippets', views.GroupViewSet)
 
 
-api = NinjaAPI(title="ROI investment Rest API Docs", docs_url="/docs")
-api.add_router("", sample_api)
+# api = NinjaAPI(title="ROI investment Rest API Docs", docs_url="/docs")
+# api.add_router("", sample_api)
 
 
 urlpatterns = [
@@ -46,7 +46,7 @@ urlpatterns = [
     path('snippets/', include('apps.snippets.urls')),
     path('', include('apps.flight.urls')),
     # path('api/v1/flight/', include('apps.flight.urls')),
-    path("api/", api.urls), # Ninja with data api
+    # path("api/", api.urls), # Ninja with data api
     path('payments/', include('apps.payments.urls')),
     path('stripe-store/', HomePageView.as_view(), name='home'),
     path('api-app/', include('apps.api_app.urls')),

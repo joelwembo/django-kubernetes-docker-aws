@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/django
     ports:
-      - 8080:8080
+      - "8000:8000"
     image: app:django
     command:
       - /bin/sh
@@ -21,10 +21,7 @@ services:
       - |
         python3 manage.py makemigrations
         python3 manage.py migrate
-        #... Add any script at will...
-        python isdkgfd.py
-        
-        python manage.py runserver 0.0.0.0:8080
+        python manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
       - redis
@@ -39,56 +36,45 @@ services:
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
       - CELERY_BROKER=redis://redis:6379/0
     depends_on:
-      - django
+#      - django
       - redis
   redis:
       image: "redis:alpine"
-
-  nginx:
-      container_name: nginx
-      restart: always
-      image: "nginx:latest"
+      container_name: redis_fintech_django
       ports:
-        - "85:85"
+        - '6379:6379'
       volumes:
-        - ./nginx:/etc/nginx/conf.d
-      networks:
-        - web_network
-      depends_on:
-        - django_fintech_enterprise_container
-
+          - redisDB:/data
   db:
-#     image: postgres
-#     volumes:
-#       - ./data/db:/var/lib/postgresql/data
-#     environment:
-#       - POSTGRES_DB=bank1
-#       - POSTGRES_USER=joelwembo
-#       - POSTGRES_PASSWORD=abcde@12345
-#       - POSTGRES_PORT=5433
-#     expose:
-#       - "5433"
-#     ports:
-#       - "5433"
-
-    platform: linux/x86_64
-    image: mysql:5.7
     restart: always
-    environment:
-      MYSQL_DATABASE: "fintech_enterpriseDB"
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-#    ports:
-#      - '3306:3306'
-#    expose:
-#       - 3306
+    image: postgres
+    container_name: fintech_enterpriseDB_postgres
     volumes:
-      - ./data/mysql/db:/var/lib/mysql
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=fintech_enterpriseDB
+      - POSTGRES_USER=joelwembo
+      - POSTGRES_PASSWORD=abcde@12345
+      - POSTGRES_PORT=5432
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    expose:
+       - "5432"
+    ports:
+       - "5432:5432"
+  pgadmin:
+        restart: always
+        image: dpage/pgadmin4
+        container_name: fintech-pgadmin # you can change this
+        depends_on:
+          - db
+        ports:
+          - "5051:80"
+        environment:
+          PGADMIN_DEFAULT_EMAIL: joelotepawembo@gmail.com
+          PGADMIN_DEFAULT_PASSWORD: abcde@12345
 
 networks:
   db_network:
     driver: bridge
   web_network:
     driver: bridge
-
-
-
